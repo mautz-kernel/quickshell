@@ -30,9 +30,6 @@ public:
 	~PwCore() override;
 	Q_DISABLE_COPY_MOVE(PwCore);
 
-	bool start(bool retry);
-	void shutdown();
-
 	[[nodiscard]] bool isValid() const;
 	[[nodiscard]] qint32 sync(quint32 id) const;
 
@@ -43,7 +40,6 @@ public:
 signals:
 	void polled();
 	void synced(quint32 id, qint32 seq);
-	void fatalError();
 
 private slots:
 	void poll();
@@ -52,7 +48,6 @@ private:
 	static const pw_core_events EVENTS;
 
 	static void onSync(void* data, quint32 id, qint32 seq);
-	static void onError(void* data, quint32 id, qint32 seq, qint32 res, const char* message);
 
 	QSocketNotifier notifier;
 	SpaHook listener;

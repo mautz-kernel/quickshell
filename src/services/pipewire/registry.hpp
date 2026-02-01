@@ -116,7 +116,6 @@ class PwRegistry
 
 public:
 	void init(PwCore& core);
-	void reset();
 
 	[[nodiscard]] bool isInitialized() const { return this->initState == InitState::Done; }
 
@@ -137,7 +136,6 @@ signals:
 	void linkGroupAdded(PwLinkGroup* group);
 	void metadataAdded(PwMetadata* metadata);
 	void initialized();
-	void cleared();
 
 private slots:
 	void onLinkGroupDestroyed(QObject* object);

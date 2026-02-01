@@ -2,6 +2,7 @@
 
 #include <qcontainerfwd.h>
 #include <qlist.h>
+#include <qnamespace.h>
 #include <qobject.h>
 #include <qqmllist.h>
 #include <qtmetamacros.h>
@@ -98,8 +99,15 @@ Pipewire::Pipewire(QObject* parent): QObject(parent) {
 	    &Pipewire::defaultConfiguredAudioSourceChanged
 	);
 
-	QObject::connect(&connection->registry, &PwRegistry::initialized, this, &Pipewire::readyChanged);
-	QObject::connect(&connection->registry, &PwRegistry::cleared, this, &Pipewire::readyChanged);
+	if (!connection->registry.isInitialized()) {
+		QObject::connect(
+		    &connection->registry,
+		    &PwRegistry::initialized,
+		    this,
+		    &Pipewire::readyChanged,
+		    Qt::SingleShotConnection
+		);
+	}
 }
 
 ObjectModel<PwNodeIface>* Pipewire::nodes() { return &this->mNodes; }
