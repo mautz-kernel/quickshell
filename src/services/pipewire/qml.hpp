@@ -171,13 +171,13 @@ private:
 	ObjectModel<PwLinkGroupIface> mLinkGroups {this};
 };
 
-///! Tracks non-monitor link connections to a given node.
+///! Tracks all link connections to a given node.
 class PwNodeLinkTracker: public QObject {
 	Q_OBJECT;
 	// clang-format off
 	/// The node to track connections to.
 	Q_PROPERTY(qs::service::pipewire::PwNodeIface* node READ node WRITE setNode NOTIFY nodeChanged);
-	/// Link groups connected to the given node, excluding monitors.
+	/// Link groups connected to the given node.
 	///
 	/// If the node is a sink, links which target the node will be tracked.
 	/// If the node is a source, links which source the node will be tracked.
