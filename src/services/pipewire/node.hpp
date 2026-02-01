@@ -199,8 +199,6 @@ public:
 	[[nodiscard]] QVector<float> volumes() const;
 	void setVolumes(const QVector<float>& volumes);
 
-	[[nodiscard]] QVector<float> server() const;
-
 signals:
 	void volumesChanged();
 	void channelsChanged();
@@ -235,7 +233,6 @@ public:
 	QString description;
 	QString nick;
 	QMap<QString, QString> properties;
-	quint64 objectSerial = 0;
 
 	PwNodeType::Flags type = PwNodeType::Untracked;
 
