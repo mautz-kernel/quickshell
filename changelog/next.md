@@ -18,6 +18,12 @@ set shell id.
 - Added the ability to override Quickshell.cacheDir with a custom path.
 - Added minimized, maximized, and fullscreen properties to FloatingWindow.
 - Added the ability to handle move and resize events to FloatingWindow.
+- Added initial support for network management.
+- Added support for grabbing focus from popup windows.
+- Added support for IPC signal listeners.
+- Added Quickshell version checking and version gated preprocessing.
+- Added a way to detect if an icon is from the system icon theme or not.
+
 
 ## Other Changes
 
